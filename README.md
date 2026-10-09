@@ -17,12 +17,17 @@ Keyframes live under `/opt/cursor/artifacts/assets/desprepato_kf_*.jpg`. Regener
 
 Output: `/opt/cursor/artifacts/total_desprepato_animation.mp4`
 
-### Optional: Veo (when Gemini credits available)
+### Connect Gemini (Veo)
+
+1. Add Cloud Agent secret **`GEMINI_API_KEY`** ([AI Studio key](https://aistudio.google.com/apikey)).
+2. Start a **new** agent run (secrets load at boot).
+3. Run:
 
 ```bash
-export GEMINI_API_KEY=...
 python3 scripts/generate_desprepato_veo.py
 ```
+
+Details: [docs/GEMINI_SETUP.md](docs/GEMINI_SETUP.md). Optional **Gemini Docs MCP** is in `.cursor/mcp.json`.
 
 ### Deprecated
 
