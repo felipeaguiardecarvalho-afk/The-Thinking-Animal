@@ -40,7 +40,20 @@ rattle and muffled thuds, no speech.
 """
 
 
+def _load_dotenv() -> None:
+    env_path = Path(__file__).resolve().parents[1] / ".env"
+    if not env_path.is_file():
+        return
+    for line in env_path.read_text().splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, _, value = line.partition("=")
+        os.environ.setdefault(key.strip(), value.strip())
+
+
 def main() -> int:
+    _load_dotenv()
     api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
     if not api_key:
         print(
@@ -63,7 +76,6 @@ def main() -> int:
         prompt=MOTION_PROMPT.strip(),
         image=image,
         config=types.GenerateVideosConfig(
-            aspect_ratio="1:1",
             resolution="720p",
             duration_seconds=8,
             negative_prompt="morphing into different character, redesigned logo, new text, subtitles, dialogue, realistic 3D, live action",

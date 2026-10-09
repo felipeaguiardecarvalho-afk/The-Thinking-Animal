@@ -10,6 +10,8 @@ This repo uses the **Gemini API** via `scripts/generate_desprepato_veo.py`.
    - Value: your `AIza...` key (paid tier required for Veo)
 3. **Start a new agent run** on this repo so the secret is injected.
 
+Never paste API keys in chat. For local runs only, copy `.env.example` to `.env` (gitignored).
+
 Verify in the agent:
 
 ```bash
